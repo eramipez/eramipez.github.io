@@ -7,11 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="start-screen">
-    <h1>Haz clic para ver tu sorpresa 😋💖</h1>
-    <script>
-        document.body.addEventListener("click", function() {
-            window.location.href = "animation.html";
-        });
-    </script>
+    <h1 id="start-text">Da doble click para ver tu sorpresa 😋💖</h1>
+
+        <!-- Audio que se reproducirá -->
+        <audio id="background-music" loop>
+            <source src="deellosaprendi.mp3" type="audio/mp3">
+        </audio>
+
+        <script>
+            document.getElementById("start-text").addEventListener("click", function() {
+                const music = document.getElementById("background-music");
+    
+                // Intentar reproducir la música
+                music.play().then(() => {
+                    // Guardar en localStorage que la música debe seguir en animation.html
+                    localStorage.setItem("musicPlaying", "true");
+                }).catch(error => console.log("Autoplay bloqueado, esperar interacción del usuario."));
+                
+                // Redirigir a animation.html
+                window.location.href = "animation.html";
+            });
+        </script>
 </body>
 </html>
