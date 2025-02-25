@@ -5,6 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const carouselImage = document.getElementById("carousel-image");
     const prevButton = document.getElementById("prev");
     const nextButton = document.getElementById("next");
+    const backgroundMusic = document.getElementById("background-music");
+
+    function playMusic() {
+        backgroundMusic.play().catch(error => console.log("Autoplay bloqueado, esperar interacción del usuario."));
+        document.removeEventListener("click", playMusic);
+    }
+
+    // Iniciar música cuando el usuario haga clic en cualquier parte de la pantalla
+    document.addEventListener("click", playMusic);
 
     const texts = [
         "Que hay personas por las que vale la pena derretirse... ❤️",
@@ -90,4 +99,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }, 1000);
 });
+
 
